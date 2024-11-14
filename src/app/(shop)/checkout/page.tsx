@@ -53,12 +53,12 @@ export default function CheckoutPage() {
             <h2 className='text-2xl mb-2 font-bold'>Dirección de entrega</h2>
             <div className='mb-10'>
               <p className='text-xl'>Fernando herrera</p>
-              <p>Av Siempre viva 123</p>
-              <p>COl Centro</p>
-              <p>Alcaría Cuachtémoc</p>
-              <p>Cuidad de México</p>
-              <p>CP 123123</p>
-              <p>123.123.123</p>
+              <small>Av Siempre viva 123</small>
+              <small>COl Centro</small>
+              <small>Alcaría Cuachtémoc</small>
+              <small>Cuidad de México</small>
+              <small>CP 123123</small>
+              <small>123.123.123</small>
             </div>
             {/* Divider */}
             <div className='w-full h-0.5 rounded bg-gray-200 mb-10'></div>

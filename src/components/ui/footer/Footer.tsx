@@ -10,7 +10,7 @@ export const Footer = () => {
           Teslo{' '}
         </span>
         <span>| shop</span>
-        <span>©{new Date().getFullYear()}</span>
+        <span>©2024</span>
       </Link>
       <Link href='/' className='mx-3'>
         Ubicaciones
