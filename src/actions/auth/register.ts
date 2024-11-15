@@ -9,13 +9,26 @@ export const registerUser = async (
   password: string
 ) => {
   try {
+    if (!name || !email || !password) {
+      throw new Error('Todos los campos son obligatorios')
+    }
+
+    const existingUser = await prisma.user.findUnique({
+      where: { email: email.toLowerCase() }
+    })
+
+    if (existingUser) {
+      throw new Error('El usuario ya existe')
+    }
+
+    // Crear el usuario
+    const hashedPassword = bcryptjs.hashSync(password)
     const user = await prisma.user.create({
       data: {
-        name: name,
+        name,
         email: email.toLowerCase(),
-        password: bcryptjs.hashSync(password)
+        password: hashedPassword
       },
-      //para que me devuelva solo los campos que necesito
       select: {
         id: true,
         name: true,
@@ -25,15 +38,15 @@ export const registerUser = async (
 
     return {
       ok: true,
-      user: user,
+      user,
       message: 'Usuario creado'
     }
   } catch (error) {
-    console.log(error)
+    console.log(error.message || error)
 
     return {
       ok: false,
-      message: 'No se pudo crear el usuario'
+      message: error.message || 'No se pudo crear el usuario'
     }
   }
 }

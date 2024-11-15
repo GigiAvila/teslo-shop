@@ -23,7 +23,6 @@ export const RegisterForm = () => {
 
   const onSubmit: SubmitHandler<FormInputs> = async (data) => {
     setErrorMessage('')
-    console.log(data)
     const { name, email, password } = data
 
     // Server action

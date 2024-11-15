@@ -12,8 +12,9 @@ export const authConfig: NextAuthConfig = {
   },
 
   callbacks: {
+    //Middleware para verificar si el usuario está autenticado
     authorized({ auth, request: { nextUrl } }) {
-      console.log({ auth })
+      // console.log({ auth })
       // const isLoggedIn = !!auth?.user;
 
       // const isOnDashboard = nextUrl.pathname.startsWith('/dashboard');
@@ -37,7 +38,7 @@ export const authConfig: NextAuthConfig = {
 
     // el user llega como nulo
     session({ session, token, user }) {
-      console.log({ session, token, user })
+      // console.log({ session, token, user })
       session.user = token.data as any
       return session
     }

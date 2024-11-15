@@ -10,12 +10,13 @@ import {
   IoShirtOutline,
   IoTicketOutline
 } from 'react-icons/io5'
+import { signOut, useSession } from 'next-auth/react'
 
 import Link from 'next/link'
 import clsx from 'clsx'
-import { logout } from '@/actions'
-import { useSession } from 'next-auth/react'
 import { useUIStore } from '@/store'
+
+// import { logout } from '@/actions'
 
 export const Sidebar = () => {
   const isSideMenuOpen = useUIStore((state) => state.isSideMenuOpen)
@@ -92,7 +93,7 @@ export const Sidebar = () => {
           <button
             className='flex w-full items-center mt-10 p-2 hover:bg-gray-100 rounded transition-all'
             onClick={async () => {
-              await logout()
+              await signOut({ redirect: false })
               closeMenu()
             }}
           >
